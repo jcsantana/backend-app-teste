@@ -1,2 +1,2 @@
-release: ENV_SILENT=true node ace migration:run --force
-web: node ace serve --watch
+web: node ./build/server.js
+release: node build/ace migration:run --force
