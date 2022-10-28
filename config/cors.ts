@@ -44,7 +44,7 @@ const corsConfig: CorsConfig = {
   |                     one of the above values.
   |
   */
-  origin: false,
+  origin: ['http://192.168.1.2:9200','http://localhost:9200/'],
 
   /*
   |--------------------------------------------------------------------------
