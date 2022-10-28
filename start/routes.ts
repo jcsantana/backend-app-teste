@@ -19,7 +19,18 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import productsRoute from './routes/products'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+/* Redirecionar para o grupo de rota api-v1 */
+Route.on('/').redirectToPath('/api-v1')
+
+Route
+  .group(() => {
+    /* Rota HOME  */
+    Route.get('/', async ({ view }) => {
+      return view.render('home')
+    })
+    /* Rotas do ProdutosController  */
+    productsRoute()
+  })
+  .prefix('/api-v1')
