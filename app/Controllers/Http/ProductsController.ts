@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Product from 'App/Models/Product'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class ProdutosController {
   public async store({ response, request }: HttpContextContract) {
@@ -11,7 +12,7 @@ export default class ProdutosController {
         'description'
       ])
       const products = await Product.create(data)
-      return response.status(200).json(products)
+      return response.status(200).json(`Produto ${products.name} cadastrado com sucesso`)
     } catch (error) {
       console.log(error)
       return response.status(400).json(`Error ao cadastrar o produto, Tente novamente mais tarde`)
@@ -33,7 +34,7 @@ export default class ProdutosController {
       /*  Get keyword search */
       let keyword = request.input('keyword')
       /* Get Limit Per page */
-      let limit = 15
+      let limit = 18
       /* Get Request Page */
       let page: number = request.input('page')
 
@@ -76,6 +77,16 @@ export default class ProdutosController {
       return response.status(200).json(`O produto ${product.name} foi deletado com sucesso!`)
     } catch (error) {
       return response.status(400).json(`Ocorreu um error ao deletar o produto`)
+    }
+  }
+
+  public async inventory({response}: HttpContextContract) {
+    try {
+      const value_inventory = await Database.rawQuery('SELECT SUM(price * inventory ) as total FROM products')
+      const quantity_inventory = await Database.rawQuery('SELECT SUM(inventory ) as total FROM products')
+      return response.status(200).json({value_inventory:value_inventory[0], quantity_inventory: quantity_inventory[0]})
+    } catch (error) {
+      return response.status(400).json(`Ocorreu um error`)
     }
   }
 }

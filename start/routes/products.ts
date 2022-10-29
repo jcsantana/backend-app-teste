@@ -6,4 +6,5 @@ export default function productsRoute() {
   Route.get('products', 'ProductsController.index')
   Route.put('products/:id', 'ProductsController.update')
   Route.delete('products/:id', 'ProductsController.destroy')
+  Route.get('inventory', 'ProductsController.inventory')
 }
