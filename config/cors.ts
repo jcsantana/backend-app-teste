@@ -44,7 +44,7 @@ const corsConfig: CorsConfig = {
   |                     one of the above values.
   |
   */
-  origin: ['http://192.168.1.2:9200','http://localhost:9200','https://jose-frontend.herokuapp.com/'],
+  origin: ['http://192.168.1.2:9200','http://localhost:9200','https://jose-frontend.herokuapp.com'],
 
   /*
   |--------------------------------------------------------------------------
