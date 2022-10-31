@@ -12,7 +12,7 @@ ser capaz de realizar um C.R.U.D simples.
 - i18n
 - MySQL
 - Framework Quasar (Frontend)
-    https://jose-frontend.herokuapp.com/#/
-    https://github.com/jcsantana/frontend-app
+[go](https://jose-frontend.herokuapp.com/#/){:target="_blank" rel="noopener"}
+[go]( https://github.com/jcsantana/frontend-app){:target="_blank" rel="noopener"}
 ```
  
